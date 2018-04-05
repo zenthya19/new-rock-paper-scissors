@@ -50,22 +50,31 @@ function computerPlay() {
 	}
 
 function win(user, computer) {
+	let user_div = document.getElementById(user);
 	userScore++;
 	userScore_p.innerHTML = userScore;
 	compScore_p.innerHTML = computerScore;
 	result_p.innerHTML = `You chose ${convertText(user)}. The computer chose ${convertText(computer)}. You win!`;
+	user_div.classList.add("green-glow");
+	setTimeout(() => user_div.classList.remove("green-glow"), 300);
+
 }
 
 function lose(user, computer) {
+	let user_div = document.getElementById(user);
 	computerScore++;
 	userScore_p.innerHTML = userScore;
 	compScore_p.innerHTML = computerScore;
 	result_p.innerHTML = `You chose ${convertText(user)}. The computer chose ${convertText(computer)}. You lose!`;
-
+	user_div.classList.add("red-glow");
+	setTimeout(() => user_div.classList.remove("red-glow"), 300);
 }
 
 function draw(user, computer) {
+	let user_div = document.getElementById(user);
 	result_p.innerHTML = `You chose ${convertText(user)}. The computer chose ${convertText(computer)}. It's a draw!`;
+	user_div.classList.add("grey-glow");
+	setTimeout(() => user_div.classList.remove("grey-glow"), 300);
 }
 
 function convertText(letter) {
