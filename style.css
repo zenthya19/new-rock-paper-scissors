@@ -71,7 +71,7 @@ header {
 	border: none;
 	position: absolute;
 	left: 48%;
-	top: 60%;
+	top: 70%;
 
 }
 
@@ -114,4 +114,20 @@ header {
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
 	padding-top: 20px;
+}
+
+/* Rounds */
+
+#rounds {
+	text-align: center;
+	font-family: 'Roboto Slab', serif;
+	padding: 20px 0;
+}
+
+#roundMessage {
+	text-align: center;
+	font-family: 'Roboto Slab', serif;
+	padding: 25px 0;
+	font-size: 30px;
+
 }

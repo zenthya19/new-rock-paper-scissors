@@ -1,11 +1,15 @@
 let userScore = 0;
 let computerScore = 0;
+let rounds = 1;
 rock_div = document.getElementById("r");
 paper_div = document.getElementById("p");
 scissors_div = document.getElementById("s");
 userScore_p = document.getElementById("user-score");
 compScore_p = document.getElementById("comp-score");
 result_p = document.getElementById("result");
+rounds_p = document.getElementById("rounds");
+roundMessage_p = document.getElementById("roundMessage");
+reset_div = document.getElementById("reset");
 
 
 
@@ -14,7 +18,28 @@ result_p = document.getElementById("result");
 function game(userChoices) {
 	let computerChoice = computerPlay()
 	let turns = playRound(userChoices, computerChoice);
+	let anotherRound = addRound();
 	}
+
+
+function addRound() {
+	if (rounds === 5 && userScore === computerScore) {
+		roundMessage_p.innerHTML = "You tied for this set!<br> Press the reset button to play again.";
+	} if (rounds === 5 && userScore > computerScore) {
+		roundMessage_p.innerHTML = "You won this set!<br> Press the reset button to play again.";
+	} if (rounds === 5 && userScore < computerScore) {
+		roundMessage_p.innerHTML = "You lost this set!<br> Press the reset button to play again."
+	}
+
+	rounds_p.innerHTML = "Round " + rounds;
+	rounds++;
+
+	if (rounds === 6) {
+		document.getElementById("r").disabled = true;
+		document.getElementById("p").disabled = true;
+		document.getElementById("s").disabled = true;
+	}
+}
 
 
 function computerPlay() {	
@@ -38,7 +63,6 @@ function lose(user, computer) {
 	result_p.innerHTML = `You chose ${convertText(user)}. The computer chose ${convertText(computer)}. You lose!`;
 
 }
-
 
 function draw(user, computer) {
 	result_p.innerHTML = `You chose ${convertText(user)}. The computer chose ${convertText(computer)}. It's a draw!`;
@@ -83,6 +107,10 @@ function playRound(player) {
 }
 }
 
+function resetGame() {
+	reset_div.innerHTML = location.reload();
+}
+
 	
 
 function main() {
@@ -90,7 +118,7 @@ function main() {
 	rock_div.addEventListener('click', () =>	game("r"));
 	paper_div.addEventListener('click', () =>	game("p"));
 	scissors_div.addEventListener('click', () => game("s"));
-
+	reset_div.addEventListener('click', () => resetGame());
 }
 
 main();
